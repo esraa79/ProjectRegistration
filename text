@@ -1,0 +1,22 @@
+  <tr>
+                            <td>Company Name</td>
+                            <td><input type="text" name="partnerCompany"></td>
+                        </tr>
+                        <tr>
+                            <td>Contact Person</td>
+                            <td><input type="text" name="partnerContact"></td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number</td>
+                            <td><input type="tel" name="partnerPhone"></td>
+                        </tr>
+                        <tr>
+                            <td>E-mail</td>
+                            <td><input type="email" name="partnerEmail"></td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td><input type="text" name="partnerCity"></td>
+                        </tr>
+                    </tbody>
+                </table>

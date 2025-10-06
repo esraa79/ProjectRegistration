@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Registration Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            
+        }
+        h2 {
+            color: #555;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .form-section {
+            margin-bottom: 25px;
+        }
+        .form-row {
+            display: flex;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input:focus{
+             border-color: #0dcaf0; /* Bootstrap info color */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px  #0b7dda;;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .checkbox-item {
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        .radio-group {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .radio-item {
+            margin-right: 20px;
+        }
+        .add-row-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+        .add-row-btn:hover {
+            background-color: #45a049;
+        }
+        .submit-btn {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 30px auto 0;
+        }
+        .submit-btn:hover {
+            background-color: #0b7dda;
+        }
+        .remove-row-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .remove-row-btn:hover {
+            background-color: #d32f2f;
+        }
+        .message {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .req{
+            color: #b02c39;
+        }
+
+         .table-bottom-border td, 
+  .table-bottom-border th {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important; 
+    color: #0b7dda;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    text-align: center;
+    
+  }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ms-5 mb-4 border-bottom">
+            <table class="table table-bottom-border">
+            <thead>            
+                <tr>
+                    <th >Illustra</th>
+                    <th >American Dynamics</th>
+                    <th >Exacq</th>
+                </tr>
+                
+            </thead>
+            <thead>
+
+                <tr>
+                    <th >Kantech</th>
+                    <th >Software House</th>
+                    <th >CEM Systems</th>
+                </tr>
+
+            </thead>
+        </table>
+        </div>
+        <h1 >Project Registration Form</h1>
+        
+       
+        
+        <form id="projectForm">
+            <!-- General Information Section -->
+            <h4 >General Information</h4>
+            <div class="form-section">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="yourName">Your Name <span class="req">*</span></label> 
+                        <input type="text" id="yourName" name="yourName"  required>
+                    </div>
+                    <div class="form-group">
+                        <label for="yourEmail">Your E-mail <span class="req">*</span></label>
+                        <input type="email" id="yourEmail" name="yourEmail" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="projectName">Project Name <span class="req">*</span></label>
+                    <input type="text" id="projectName" name="projectName" required>
+                </div>
+            </div>
+
+            <!-- Customer Information Section -->
+            <h4>Customer Information</h4>
+            <div class="form-section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>End User</th>
+                            <th>Contractor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Company Name </td>
+                            <td><input type="text" name="endUserCompany" placeholder="required" required></td>
+                            <td><input type="text" name="contractorCompany" ></td>
+                        </tr>
+                        <tr>
+                            <td>Contact Person</td>
+                            <td><input type="text" name="endUserContact" placeholder="required" required ></td>
+                            <td><input type="text" name="contractorContact" ></td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number</td>
+                            <td><input type="tel" name="endUserPhone" placeholder="required" required></td>
+                            <td><input type="tel" name="contractorPhone" ></td>
+                        </tr>
+                        <tr>
+                            <td>E-mail</td>
+                            <td><input type="email" name="endUserEmail" placeholder="required" required></td>
+                            <td><input type="email" name="contractorEmail" ></td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td><input type="text" name="endUserCity" placeholder="required" required></td>
+                            <td><input type="text" name="contractorCity" ></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Partner Information Section -->
+            <h2>Partner Information</h2>
+            <div class="form-section">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Company Name</td>
+                            <td><input type="text" name="partnerCompany" placeholder="required" required></td>
+                        </tr>
+                        <tr>
+                            <td>Contact Person</td>
+                            <td><input type="text" name="partnerContact" placeholder="required" required></td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number</td>
+                            <td><input type="tel" name="partnerPhone" placeholder="required" required></td>
+                        </tr>
+                        <tr>
+                            <td>E-mail</td>
+                            <td><input type="email" name="partnerEmail" placeholder="required" required></td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td><input type="text" name="partnerCity" placeholder="required" required></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="form-group" >
+                    <label>Brands</label>
+                    <div class="checkbox-group" >
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="illustra" name="brands" value="Illustra">
+                            <label for="illustra">Illustra</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="exacq" name="brands" value="Exacq">
+                            <label for="exacq">Exacq</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="americanDynamics" name="brands" value="American Dynamics">
+                            <label for="americanDynamics">American Dynamics</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="kantech" name="brands" value="Kantech">
+                            <label for="kantech">Kantech</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="softwareHouse" name="brands" value="Software House">
+                            <label for="softwareHouse">Software House</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cemSystems" name="brands" value="CEM systems">
+                            <label for="cemSystems">CEM systems</label>
+                        </div>
+                          <div class="checkbox-item">
+                            <input type="checkbox" id="Accessories" name="brands" value="Accessories">
+                            <label for="Accessories">Accessories</label>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Registration Reason Section -->
+            <h2>Why do you want project registration</h2>
+            <div class="form-section">
+                <div class="radio-group" >
+                    <div class="radio-item">
+                        <input type="radio" id="projectProtection" name="registrationReason" value="Project Protection">
+                        <label for="projectProtection">Project Protection</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="specialPricing" name="registrationReason" value="Special Pricing">
+                        <label for="specialPricing">Special Pricing</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="otherReasons" name="registrationReason" value="Other Reasons">
+                        <label for="otherReasons">Other Reasons</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Details Section -->
+            <h2>Project Details</h2>
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="projectDescription">Project Description</label>
+                    <textarea id="projectDescription" name="projectDescription" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Model Numbers and Quantities</label>
+                    <table id="modelTable">
+                        <thead>
+                            <tr>
+                                <th>Model Number</th>
+                                <th>Quantity</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" name="modelNumber[]" required></td>
+                                <td><input type="number" name="quantity[]" min="1"></td>
+                                <td><button type="button" class="remove-row-btn">Remove</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="add-row-btn" id="addModelRow">ADD ROW</button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="approximateValue">Approximate Value - Target Price</label>
+                    <input type="number" id="approximateValue" name="approximateValue" min="0" step="0.01">
+                </div>
+            </div>
+             <div id="message" class="message"></div>
+            <button type="submit" class="submit-btn">Submit Registration</button>
+            
+        </form>
+    </div>
+<script>
+
+   
+
+  emailjs.init("eswOswriCHniP2aWo");
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('projectForm');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Clear previous messages
+      messageDiv.style.display = 'none';
+      document.querySelectorAll('.field-error').forEach(el => el.remove());
+
+      let valid = true;
+
+      /*// ✅ Validate required fields
+      const requiredFields = form.querySelectorAll('[required]');
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          valid = false;
+          const errorMsg = document.createElement('div');
+          errorMsg.classList.add('field-error');
+          errorMsg.style.color = 'red';
+          errorMsg.style.fontSize = '13px';
+          errorMsg.textContent = `${field.previousElementSibling ? field.previousElementSibling.textContent : 'This field'} is required.`;
+          field.insertAdjacentElement('afterend', errorMsg);
+        }
+      });
+
+      if (!valid) {
+        // Show general message at top
+        messageDiv.textContent = '⚠️ Please fill in all required fields before submitting.';
+        messageDiv.className = 'message error';
+        messageDiv.style.display = 'block';
+        return;
+      }*/
+
+      // Show loading message
+      messageDiv.textContent = 'Submitting form...';
+      messageDiv.className = 'message';
+      messageDiv.style.display = 'block';
+
+      // Gather data
+      const data = {
+        yourName: document.getElementById('yourName').value,
+        yourEmail: document.getElementById('yourEmail').value,
+        projectName: document.getElementById('projectName').value,
+        registrationReason: document.querySelector('input[name="registrationReason"]:checked')?.value || 'Not specified',
+        approximateValue: document.getElementById('approximateValue').value,
+        endUserCompany: document.querySelector('input[name="endUserCompany"]').value,
+        endUserContact: document.querySelector('input[name="endUserContact"]').value,
+        endUserPhone: document.querySelector('input[name="endUserPhone"]').value,
+        contractorCompany: document.querySelector('input[name="contractorCompany"]').value,
+        contractorContact: document.querySelector('input[name="contractorContact"]').value,
+        contractorPhone: document.querySelector('input[name="contractorPhone"]').value,
+        partnerCompany: document.querySelector('input[name="partnerCompany"]').value,
+        partnerContact: document.querySelector('input[name="partnerContact"]').value,
+        partnerPhone: document.querySelector('input[name="partnerPhone"]').value,
+        partnerEmail: document.querySelector('input[name="partnerEmail"]').value,
+        partnerCity: document.querySelector('input[name="partnerCity"]').value,
+        brands: Array.from(document.querySelectorAll('input[name="brands"]:checked')).map(cb => cb.value).join(', '),
+        models: Array.from(document.querySelectorAll('input[name="modelNumber[]"]'))
+                    .map((input, i) => input.value ? `${input.value} (Qty: ${document.querySelectorAll('input[name="quantity[]"]')[i].value || 1})` : '')
+                    .filter(Boolean).join('; '),
+        projectDescription: document.getElementById('projectDescription').value
+      };
+
+      console.log('Data being sent to EmailJS:', data);
+
+      // Send email
+      emailjs.send("service_jci", "template_zdmf69b", data)
+        .then(function(response) {
+          console.log('SUCCESS!', response);
+          messageDiv.textContent = '✅ Form submitted successfully! Email sent.';
+          messageDiv.className = 'message success';
+          messageDiv.style.display = 'block';
+          form.reset();
+
+          // Reset the model table to one row
+          const table = document.getElementById('modelTable').getElementsByTagName('tbody')[0];
+          while (table.rows.length > 1) table.deleteRow(1);
+        })
+        .catch(function(error) {
+          console.log('FAILED...', error);
+          messageDiv.textContent = '❌ Failed to submit form. Error: ' + error.text;
+          messageDiv.className = 'message error';
+          messageDiv.style.display = 'block';
+        });
+    });
+  });
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const addRowBtn = document.getElementById('addModelRow');
+    const tableBody = document.querySelector('#modelTable tbody');
+
+    // Create a separate "Remove Last Row" button
+    /*const removeLastBtn = document.createElement('button');
+    removeLastBtn.textContent = 'REMOVE LAST ROW';
+    removeLastBtn.type = 'button';
+    removeLastBtn.className = 'remove-row-btn';
+    removeLastBtn.style.marginLeft = '10px';
+    addRowBtn.insertAdjacentElement('afterend', removeLastBtn);*/
+
+    // Add new row
+    addRowBtn.addEventListener('click', function() {
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td><input type="text" name="modelNumber[]" ></td>
+            <td><input type="number" name="quantity[]" min="1" ></td>
+            <td><button  type="button" class="remove-row-btn">Remove</button></td>
+
+        `;
+        tableBody.appendChild(newRow);
+    });
+
+    // Remove  row
+   tableBody.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('remove-row-btn')) {
+        e.target.closest('tr').remove();
+    }
+});
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
